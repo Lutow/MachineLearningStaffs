@@ -34,6 +34,7 @@ def preprocessing(X):
 
 X, y = load_data(dataset)
 X = preprocessing(X)
+#Scaling function 
 X_standardized = StandardScaler().fit_transform(X)
 
 #we will separate the training data and test data
