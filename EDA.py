@@ -18,3 +18,11 @@ summary = pd.DataFrame({
 
 # Select numerical columns
 numerical_columns = df.select_dtypes(include=['float64', 'int64']).columns
+
+for column in numerical_columns:
+    plt.figure(figsize=(8, 4))
+    sns.histplot(df[column].dropna(), kde=True)
+    plt.title(f'Distribution of {column}')
+    plt.show()
+
+print(summary)
