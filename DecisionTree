@@ -24,11 +24,11 @@ def preprocessing(X):
     #unsuitable columns are transformed into binary (so the number of columns is multiplied by the number of possible results)
     X_encoded = pd.DataFrame(encoder.fit_transform(X[categorical_columns]),
                              columns=encoder.get_feature_names_out(categorical_columns))
-    
+    #process to the imputation
     columns_to_impute = ['loan_int_rate', 'person_emp_length']
-    data_to_impute = X[columns_to_impute]
     imputer = KNNImputer(n_neighbors=5)
-    imputed_data = imputer.fit_transform(data_to_impute)
-    X[columns_to_impute] = imputed_data
-    return X
+    X[columns_to_impute] = imputer.fit_transform(X[columns_to_impute])
+
+    X_preprocessed = pd.concat([X_encoded, X.drop(columns=categorical_columns)], axis=1)
+    return X_preprocessed
 
