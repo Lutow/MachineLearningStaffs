@@ -51,3 +51,8 @@ xx, yy = np.meshgrid(np.arange(X_pca[:, 0].min() - 1, X_pca[:, 0].max() + 1, 0.1
                      np.arange(X_pca[:, 1].min() - 1, X_pca[:, 1].max() + 1, 0.1))
 
 Z = knn.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
+ 
+plt.contourf(xx, yy, Z, cmap=ListedColormap(['#FFAAAA', '#AAAAFF']))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap=ListedColormap(['#FF0000', '#0000FF']), edgecolor='k' )
+plt.title(f"KNN Decision Boundaries (k={k})")
+plt.show()
