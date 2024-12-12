@@ -41,3 +41,10 @@ X_train, X_test, y_train, y_test = train_test_split(X_standardized, y, test_size
 
 dt = DecisionTreeClassifier(max_depth=3)
 dt.fit(X_train, y_train)
+
+y_pred = dt.predict(X_test)
+
+plt.figure(figsize=(20, 10))
+plot_tree(dt, feature_names=X.columns, class_names=['Rejected', 'Approved'], filled=True, fontsize=10)
+plt.title("Decision Tree")
+plt.show()
