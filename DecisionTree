@@ -16,3 +16,20 @@ def load_data(dataset):
             'person_emp_length', 'loan_intent', 'loan_grade', 'loan_amnt']]
     y = df['loan_status']
     return X, y
+
+#preprocessing function
+def preprocessing(X):
+    home_ownership_map = {'MORTGAGE': 0, 'RENT': 1, 'OWN': 2}
+    loan_intent_map = {'DEBTCONSOLIDATION': 0, 'EDUCATION': 1, 'MEDICAL': 2,
+                       'VENTURE': 3, 'PERSONAL': 4, 'HOMEIMPROVEMENT': 5}
+    loan_grade_map = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5}
+
+    X['person_home_ownership'] = X['person_home_ownership'].map(home_ownership_map)
+    X['loan_intent'] = X['loan_intent'].map(loan_intent_map)
+    X['loan_grade'] = X['loan_grade'].map(loan_grade_map)
+    columns_to_impute = ['loan_int_rate', 'person_emp_length']
+    data_to_impute = X[columns_to_impute]
+    imputer = KNNImputer(n_neighbors=5)
+    imputed_data = imputer.fit_transform(data_to_impute)
+    X[columns_to_impute] = imputed_data
+    return X
