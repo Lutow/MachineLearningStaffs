@@ -36,3 +36,8 @@ X, y = load_data(dataset)
 X = preprocessing(X)
 X_standardized = StandardScaler().fit_transform(X)
 
+#we will separate the training data and test data
+X_train, X_test, y_train, y_test = train_test_split(X_standardized, y, test_size=0.3)
+
+dt = DecisionTreeClassifier(max_depth=3)
+dt.fit(X_train, y_train)
