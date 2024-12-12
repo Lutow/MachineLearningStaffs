@@ -16,4 +16,5 @@ summary = pd.DataFrame({
     'Standard Deviation': df[numerical_columns].std(),
 })
 
+# Select numerical columns
 numerical_columns = df.select_dtypes(include=['float64', 'int64']).columns
