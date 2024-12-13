@@ -75,7 +75,7 @@ plt.show()
 #matrix confusion
 y_pred = knn.predict(X_test)
 cm = confusion_matrix(y_test, y_pred, labels=knn.classes_)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=dt.classes_)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=knn.classes_)
 disp.plot(cmap=plt.cm.Blues)
 plt.title("Confusion Matrix (KNN)")
 plt.show()
