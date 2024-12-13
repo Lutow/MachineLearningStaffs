@@ -17,6 +17,7 @@ def load_data(dataset):
     y = df['loan_status']
     return X, y
 
+
 #preprocessing function
 def preprocessing(X):
     categorical_columns = ['person_home_ownership', 'loan_intent', 'loan_grade', 'cb_person_default_on_file']
