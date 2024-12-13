@@ -4,7 +4,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.impute import KNNImputer
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import plot_tree
 from sklearn.metrics import classification_report, roc_curve, auc, confusion_matrix, ConfusionMatrixDisplay
 
 
@@ -52,7 +53,7 @@ plt.show()
 print("",classification_report(y_test, y_pred, target_names=['Rejected', 'Approved']))
 
 # Calcul ROC
-fpr, tpr, thresholds = roc_curve(y_test, dt.predict_proba(X_test)[:, 1])
+fpr, tpr, thresholds = roc_curve(y_test, rf.predict_proba(X_test)[:, 1])
 roc_auc = auc(fpr, tpr)
 
 #courbe ROC
