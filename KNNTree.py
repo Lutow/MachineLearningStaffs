@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.impute import KNNImputer
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
