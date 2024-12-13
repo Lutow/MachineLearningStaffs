@@ -8,7 +8,7 @@ from sklearn.impute import KNNImputer
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report, roc_curve, auc
+from sklearn.metrics import classification_report, roc_curve, auc, confusion_matrix, ConfusionMatrixDisplay
 
 dataset = "dataset.xlsx"
 df = pd.read_excel(dataset)
@@ -72,7 +72,8 @@ plt.legend(loc="lower right")
 plt.grid()
 plt.show()
 #matrix confusion
-cm = confusion_matrix(y_test, y_pred, labels=dt.classes_)
+y_pred = knn.predict(X_test)
+cm = confusion_matrix(y_test, y_pred, labels=knn.classes_)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=dt.classes_)
 disp.plot(cmap=plt.cm.Blues)
 plt.title("Confusion Matrix (KNN)")
