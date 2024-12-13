@@ -9,7 +9,7 @@ from sklearn.tree import plot_tree
 from sklearn.metrics import classification_report, roc_curve, auc, confusion_matrix, ConfusionMatrixDisplay
 
 
-dataset = "dataset.xlsx"
+dataset = "Credit Risk Dataset.xlsx"
 df = pd.read_excel(dataset)
 
 #columns separation
