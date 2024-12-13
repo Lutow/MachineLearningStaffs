@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, roc_curve, auc, confusion_matrix, ConfusionMatrixDisplay
 
-dataset = "dataset.xlsx"
+dataset = "Credit Risk Dataset.xlsx"
 df = pd.read_excel(dataset)
 
 def load_data(dataset):
