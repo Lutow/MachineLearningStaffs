@@ -58,6 +58,7 @@ plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap=ListedColormap(['#FF0000', '#000
 plt.title(f"KNN Decision Boundaries (k={k})")
 plt.show()
 
+y_pred = knn.predict(X_test)
 print("",classification_report(y_test, y_pred, target_names=['Rejected', 'Approved']))
 # Calcul ROC
 fpr, tpr, thresholds = roc_curve(y_test, knn.predict_proba(X_test)[:, 1])
