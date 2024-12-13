@@ -16,3 +16,15 @@ def load_data(dataset):
             'cb_person_default_on_file','cb_person_cred_hist_length']]
     y = df['loan_status']
     return X, y
+
+def preprocessing(X):
+    categorical_columns = ['person_home_ownership', 'loan_intent', 'loan_grade', 'cb_person_default_on_file']
+    encoder = OneHotEncoder(sparse_output=False, drop='first')
+    X_encoded = pd.DataFrame(encoder.fit_transform(X[categorical_columns]),
+                             columns=encoder.get_feature_names_out(categorical_columns))
+    columns_to_impute = ['loan_int_rate', 'person_emp_length']
+    imputer = KNNImputer(n_neighbors=5)
+    X[columns_to_impute] = imputer.fit_transform(X[columns_to_impute])
+
+    X_preprocessed = pd.concat([X_encoded, X.drop(columns=categorical_columns)], axis=1)
+    return X_preprocessed
