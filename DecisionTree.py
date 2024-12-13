@@ -50,3 +50,5 @@ plt.figure(figsize=(20, 10))
 plot_tree(dt, feature_names=X.columns, class_names=['Rejected', 'Approved'], filled=True, fontsize=10)
 plt.title("Decision Tree")
 plt.show()
+
+print("",classification_report(y_test, y_pred, target_names=['Rejected', 'Approved']))
