@@ -50,11 +50,13 @@ plt.figure(figsize=(20, 10))
 plot_tree(dt, feature_names=X.columns, class_names=['Rejected', 'Approved'], filled=True, fontsize=10)
 plt.title("Decision Tree")
 plt.show()
-
+#Metrics
+# Precision, Recall, F1-score
 print("",classification_report(y_test, y_pred, target_names=['Rejected', 'Approved']))
-
+# Calcul ROC
 fpr, tpr, thresholds = roc_curve(y_test, dt.predict_proba(X_test)[:, 1])
 roc_auc = auc(fpr, tpr)
+#courbe ROC
 plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC Curve (AUC = {roc_auc:.2f})')
 plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--', label="No Skill (Random Guess)")
 plt.xlabel("False Positive Rate")
