@@ -66,3 +66,9 @@ plt.legend(loc="lower right")
 plt.grid()
 plt.show()
 
+#confusion matrix
+cm = confusion_matrix(y_test, y_pred, labels=dt.classes_)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=dt.classes_)
+disp.plot(cmap=plt.cm.Blues)
+plt.title("Confusion Matrix (Decision Tree)")
+plt.show()
